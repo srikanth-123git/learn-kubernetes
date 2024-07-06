@@ -10,7 +10,7 @@ spec:
         - name: nginx-path
           mountPath: /usr/share/nginx/html
     - name: nginx-content
-      image: rkalluru/d78-nginx:v1
+      image: github-repos/devops-nginx:v1
       volumeMounts:
         - name: nginx-path
           mountPath: /usr/share/nginx/html
