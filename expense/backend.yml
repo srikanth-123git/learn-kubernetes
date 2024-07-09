@@ -3,6 +3,10 @@ kind: Pod
 metadata:
   name: backend
 spec:
+  volumes:
+    - name: secrets
+      emptyDir:
+        sizeLimit: 5Mi
   initContainer:
 
   containers:
