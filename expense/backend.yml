@@ -4,11 +4,30 @@ metadata:
   name: backend
 spec:
   volumes:
-    - name: secrets
+    - name: vault
       emptyDir:
         sizeLimit: 5Mi
   initContainer:
-
+    - name: vault
+      image: 471112738465.dkr.ecr.us-east-1.amazonaws.com/vault-init-container:v1
+      env:
+        - name: VAULT_ADDR
+          value: "https://vault-internal.psrikanth.online:8200"
+        - name: VAULT_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: vault-token
+              key: token
+        - name: SECRET_NAME
+          value: expense-dev/backend
+        - name: VAULT_SKIP_VERIFY
+          value: TRUE
+      volumeMounts:
+        - mountPath: /data
+          name: vault
   containers:
     - name: backend
       image: 471112738465.dkr.ecr.us-east-1.amazonaws.com/expense-backend:2.0.1
+      volumeMounts:
+        - mountPath: /data
+          name: vault
