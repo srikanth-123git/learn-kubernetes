@@ -21,7 +21,7 @@ spec:
         - name: SECRET_NAME
           value: expense-dev/backend
         - name: VAULT_SKIP_VERIFY
-          value: TRUE
+          value: "TRUE"
       volumeMounts:
         - mountPath: /data
           name: vault
