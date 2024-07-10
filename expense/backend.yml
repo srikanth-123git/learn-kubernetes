@@ -9,7 +9,7 @@ spec:
         sizeLimit: 5Mi
   initContainer:
     - name: vault
-      image: 471112738465.dkr.ecr.us-east-1.amazonaws.com/vault-init-container:v1
+      image: 471112738465.dkr.ecr.us-east-1.amazonaws.com/vault-init-container:v2
       env:
         - name: VAULT_ADDR
           value: "https://vault-internal.psrikanth.online:8200"
@@ -27,7 +27,7 @@ spec:
           name: vault
   containers:
     - name: backend
-      image: 471112738465.dkr.ecr.us-east-1.amazonaws.com/expense-backend:2.0.1
+      image: 471112738465.dkr.ecr.us-east-1.amazonaws.com/expense-backend:2.0.2
       volumeMounts:
         - mountPath: /data
           name: vault
