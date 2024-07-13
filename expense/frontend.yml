@@ -2,11 +2,13 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: frontend
+  labels:
+    appName: frontend
+    projectName: expense
 spec:
   containers:
     - name: frontend
-      image: 471112738465.dkr.ecr.us-east-1.amazonaws.com/expense-frontend:2.0.1
-
+      image: 471112738465.dkr.ecr.us-east-1.amazonaws.com/expense-frontend:2.0.0
 ---
 apiVersion: v1
 kind: Service
@@ -22,3 +24,4 @@ spec:
       protocol: TCP
       port: 80
       targetPort: 80
+
